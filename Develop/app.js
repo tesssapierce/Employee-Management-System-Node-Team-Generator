@@ -32,17 +32,41 @@ function menu() {
       {
         type: "input",
         message: "What is the manager's ID?",
-        name: "managerID"
+        name: "managerID",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an ID"
+          } if (isNaN(answer)) {
+            return "Please enter a valid number"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: "What is the manager's Email?",
-        name: "managerEmail"
+        name: "managerEmail",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an Email"
+          } if (!answer.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)){
+            return "Please enter a valid Email Address"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: "What is the manager's Office Number?",
-        name: "managerOfficeNo"
+        name: "managerOfficeNo",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an Office Number"
+          } if (isNaN(answer)) {
+            return "Please enter a valid number"
+          }
+          return true
+        }
       }]).then(response => {
         const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.managerOfficeNo)
         employees.push(manager)
@@ -75,22 +99,50 @@ function menu() {
       {
         type: "input",
         message: `What is the ${newTeamMember}'s name?`,
-        name: "engineerName"
+        name: "engineerName",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter a Name"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s ID?`,
-        name: "engineerID"
+        name: "engineerID",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an ID"
+          } if (isNaN(answer)) {
+            return "Please enter a valid number"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s Email?`,
-        name: "engineerEmail"
+        name: "engineerEmail",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an Email"
+          } if (!answer.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)){
+            return "Please enter a valid Email Address"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s Github Username?`,
         name: "engineerUsername",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter a Github Username"
+          }
+          return true
+        }
       }]).then(response => {
         const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerUsername)
         employees.push(engineer)
@@ -104,22 +156,50 @@ function menu() {
       {
         type: "input",
         message: `What is the ${newTeamMember}'s name?`,
-        name: "internName"
+        name: "internName",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter a name"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s ID?`,
-        name: "internID"
+        name: "internID",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an ID"
+          } if (isNaN(answer)) {
+            return "Please enter a valid number"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s Email?`,
-        name: "internEmail"
+        name: "internEmail",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter an email"
+          } if (!answer.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)){
+            return "Please enter a valid Email Address"
+          }
+          return true
+        }
       },
       {
         type: "input",
         message: `What is the ${newTeamMember}'s school?`,
         name: "internSchool",
+        validate: answer => {
+          if (!answer) {
+            return "Please enter a school"
+          }
+          return true
+        }
       }]).then(response => {
         const intern = new Intern(response.internName, response.internID, response.internEmail, response.internSchool)
         employees.push(intern)
